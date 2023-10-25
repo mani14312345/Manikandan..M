@@ -1,0 +1,25 @@
+import requests
+
+# URL of the web page you want to download
+url = "https://example.com"
+
+try:
+    # Send an HTTP GET request to the URL
+    response = requests.get(url)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        # Get the source code of the web page
+        page_source = response.text
+
+        # Print the source code
+        print(page_source)
+
+        # You can also save the source code to a file if needed
+        # with open("web_page_source.html", "w", encoding="utf-8") as f:
+        #     f.write(page_source)
+    else:
+        print("Failed to retrieve the web page. Status code:", response.status_code)
+
+except requests.exceptions.RequestException as e:
+    print("An error occurred:", e)
